@@ -1,0 +1,99 @@
+TEXCONV 2.3 (1996) (as found in the BRender SDK for PS1)
+TEXCONV 2.4 (1996)
+Usage: texconv {options}
+
+NOTES:
+See texconv.bat for some command line examples.
+Alpha toggle (-a) and pixelmap naming (-N) don't work in 2.3.
+2.x versions can only generate 0x03 pixelmap file types.
+Can't be sure any version TEXCONV reads INDEXA_88 properly.
+
+Options are treated as commands executed in left-to-right order -
+
+   <input-file>             Load a file into current data
+   -I <input-type>          Set input file type
+   -O <output-type>         Set output file type
+
+   -a                       Toggle current 32 bit pixelmaps to exclude/include
+                            alpha data (default exclude)
+                            (DOESN'T WORK in 2.3?)
+   -c <pixelmap-type>[,t]   Convert to pixelmap type, may involve quantizing.
+                            t is the alpha channel threshold (0-255) for
+                            conversions involving 32 bit pixelmaps.
+   -f                       'Forget' all current data
+   -o <file>                Generate output file from current data
+   -p <pixelmap-type>       Convert all palettes from indexed pixelmaps to new type
+				                Default palette type BR_PMT_RGBX_888
+   -r <file>,<pixelmap-type>,offset,x,y
+                            Load raw data file as pixelmap-type,
+                            with pixel dimensions x,y, from offset into file
+   -v [<pixelmap-type>]     view snapshot of current data as pixelmap-type
+                            Default BR_PMT_RGB_888
+   -x                       flip left/right
+   -y                       flip top/bottom
+
+   -C <x,y>                 Reset pixelmap origin to x,y
+   -F                       Toggle high/wide palettes. Default is high. Only PlayStation
+                            currently requires wide palettes
+   -M                       Generate all mip levels to 1x1 from current size (powers of 2)
+                            Naming convention :
+                               pixelmap identifier appended with 0,1,2... for mip level (0 closest)
+   -N <name>                Assign identifier 'name' to data
+                            (DOESN'T WORK in 2.3?)
+   -P <name>[,RAW]          Apply palette from a file to all current indexed
+                            pixelmaps. If RAW is specified, the palette file
+                            is 768 byte rgb, otherwise pixelmap format
+   -Q <name>[,b,r]          Quantize to palette supplied (pixelmap format)
+                            using (b)ase and (r)ange palette entries
+   -R b,r                   Quantize and remap to (b)ase,(r)ange colours.
+                            (0 <= b,r <256)
+   -S x,y[,<float>]         Scale to new x,y dimensions using optional filter
+                            size f (default 3.0)
+   @file                    perform all operation contained within <file>
+				                Comments marked with ; or #
+
+
+   <output-type> =
+            palette         Palette information stripped from bitmap (.pix)
+            image           Pixelmap without palette (.pix)
+            pixelmap        Image with any palette information (.pix)
+            targa           Output as .tga file
+
+   If a type is not specified, the default is pixelmap
+
+
+   <input-type> =
+            pix    - BRender Pixelmap format
+            bmp    - Windows BMP format   (4,8,24,RLE4,RLE8)
+            gif    - CompuServ GIF format (1< x <=8 bit)
+            tga    - Targa TGA format     (8,15,16,24,32 bit)
+            iff    - Amiga IFF/LBM format (1< x <=8 bit)
+
+   If a type is not specified, it will be guessed from the extension
+   of the filename.
+
+
+   <pixelmap-type> =
+      BR_PMT_INDEX_1    (Not supported)
+      BR_PMT_INDEX_2    (Not supported)
+      BR_PMT_INDEX_4    (4 bit indexed)
+      BR_PMT_INDEX_8    (8 bit indexed)
+
+      BR_PMT_RGB_555    (RGB 16 bit 5 bits per colour component)
+      BR_PMT_RGB_565    (RGB 16 bit 5,6,5 bit colour components)
+      BR_PMT_RGB_888    (RGB 24 bit 8 bits per colour component)
+      BR_PMT_RGBX_888   (RGB 32 bit 8 bits per colour component)
+      BR_PMT_RGBA_8888     (RGBA 32 bit 8 bits per colour component)
+
+      BR_PMT_YUYV_8888     (Not supported)
+      BR_PMT_YUV_888    (Not supported)
+      BR_PMT_DEPTH_16   (Not supported)
+      BR_PMT_DEPTH_32   (Not supported)
+      BR_PMT_ALPHA_8    (Opacity map)
+
+      BR_PMT_INDEXA_88     (Opacity + index) (Read-only, no write)
+      BR_PMT_NORMAL_INDEX_8   (Not supported)
+      BR_PMT_NORMAL_XYZ    (Not supported)
+      BR_PMT_BGR_555    (Reversed 16 bit 5 bits per colour component)
+
+      BR_PMT_RGBA_4444     (RGBA 16 bit 4 bits per colour component)
