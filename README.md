@@ -24,21 +24,27 @@ However, 0x3D version (via texconv-win) has that mip_offset (uint16 just before 
 *List of included examples:*
 * embedded palettes (both 0x03 and 0x3D file types)
 * mipmapped pixelmaps (both 0x03 and 0x3D file types)
+
 Each pixel is an index into a colour map
 * 0x02	BR_PMT_INDEX_4
 * 0x03	BR_PMT_INDEX_8
+
 True colour RGB
 * 0x04	BR_PMT_RGB_555		(16 bits per pixel)
 * 0x05	BR_PMT_RGB_565		(16 bits per pixel)
 * 0x06	BR_PMT_RGB_888		(24 bits per pixel)
 * 0x07	BR_PMT_RGBX_888		(32 bits per pixel)
 * 0x08	BR_PMT_RGBA_8888	(32 bits per pixel)
+
 Opacity
 * 0x0D	BR_PMT_ALPHA_8		(generated manually)
+
 Opacity + Index
 * 0x0E	BR_PMT_INDEXA_88	(generated manually)
+
 Wrong way around 15 bit true colour
 * 0x11	BR_PMT_BGR_555
+
 16 bit r,g,b & alpha
 * 0x12	BR_PMT_RGBA_4444	(might be swapped with the one below)
 * 0x20	BR_PMT_ARGB_4444
@@ -51,6 +57,7 @@ This project also includes various versions of BRender TEXCONV:
 * TEXCONV 2.4 (1996) - DOS
 * TEXCONV 1.1 (1997) - DOS (compiled by maarten, thanks!)
 * TEXCONV 1.1 (1997) - WIN (compiled by maarten, thanks!)
+
 Version 1.1 is indeed more recent than 2.x and is compiled from the BRender v1.3.2 release: [texconv source folder](https://github.com/foone/BRender-v1.3.2/tree/main/tools/texconv).
 
 Also included are various examples of command lines in a .bat file.
